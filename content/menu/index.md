@@ -3,5 +3,5 @@ headless: true
 ---
 
 - **Menu**
-- [Members]({{< relref "/docs/shotcodes/buttons" >}})
+- [Members]({{< relref "/docs/shotcodes/Members" >}})
 <br />
