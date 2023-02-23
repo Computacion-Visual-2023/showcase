@@ -6,6 +6,6 @@ Paula Alejandra Cadena Espitia
 
 # Repositorio
 
-{{< hint [info] >}}
+{{< hint info >}}
 https://github.com/Computacion-Visual-2023/showcase
 {{< /hint >}}
