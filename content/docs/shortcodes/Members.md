@@ -1,6 +1,6 @@
 # Members
 
-Juan David Cholano  \
+Juan David Solano  \
 Marcos Macias \
 Paula Alejandra Cadena Espitia 
 
