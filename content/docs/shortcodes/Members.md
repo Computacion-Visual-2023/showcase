@@ -1,8 +1,8 @@
 # Members
 
-Juan David Cholano
-Marcos Macias
-Paula Alejandra Cadena Espitia
+Juan David Cholano <br /> 
+Marcos Macias <br /> 
+Paula Alejandra Cadena Espitia <br /> 
 
 # Repositorio
 
