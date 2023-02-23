@@ -2,7 +2,7 @@
 
 Juan David Cholano  \
 Marcos Macias \
-Paula Alejandra Cadena Espitia \
+Paula Alejandra Cadena Espitia 
 
 # Repositorio
 
