@@ -18,11 +18,14 @@ Look at [this](https://mathworld.wolfram.com/ScintillatingGridIllusion.html) and
 
 {{< details title="p5-div markdown" open=false >}}
 {{< highlight html >}}
-{{</* p5-div sketch="/showcase/sketches/scintillating.js" */>}}
+{{</* p5-div sketch="/showcase/sketches/kinegrama.js" */>}}
 {{< /highlight >}}
 {{< /details >}}
 
-{{< p5-div sketch="/showcase/sketches/scintillating.js" >}}
+
+{{< p5-div sketch="/showcase/sketches/kinegrama.js" >}}
+
+
 
 # p5-instance-div
 
