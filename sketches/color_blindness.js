@@ -5,6 +5,7 @@ function preload(){
 }
 
 function setup(){
+
     simImtensitySlider = createSlider(0,1,0,0.1)
     simImtensitySlider.style('width', '80px');
     simImtensitySlider.position(10, 10);
@@ -16,6 +17,7 @@ function setup(){
     typeRadio.selected("protan")
     typeRadio.style('width', '80px')
     typeRadio.position(10,30)
+    inputImg = createFileInput(handleFile); inputImg.position(255, 5); inputImg.size(240);
     createCanvas(725, 425);
     pixelDensity(1);
     
@@ -35,6 +37,7 @@ function draw(){
     }
     updatePixels()
 }
+function handleFile(file) { if (file.type === 'image') { img = createImg(file.data, ''); img.hide(); } }
 
 function rgba2rgb(r, g, b, a){
     var r3 = Math.round(((1 - a) * 255) + (a * r))
