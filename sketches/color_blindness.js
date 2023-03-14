@@ -144,8 +144,6 @@ function fullProcess(r,g,b,a,colorBlindType, intensity){
     }
     pixelRow = lms2rgb(pixelRow[0],pixelRow[1],pixelRow[2])
     pixelRow = rgb2rgba(pixelRow[0],pixelRow[1],pixelRow[2],a)
-    //console.log("puchaa"+pixelRow)
     pixelRow = simIntensity(r,g,b,a, pixelRow[0],pixelRow[1],pixelRow[2],intensity)
-    //console.log("k sta pasanda"+pixelRow)
     return pixelRow
 }
