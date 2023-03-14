@@ -44,4 +44,3 @@ It is present from birth. It does not contain any of the available pigments of c
 
 {{< p5-iframe sketch="/showcase/sketches/color_blindness.js" width="725" height="425">}}
 
-this is just a test
