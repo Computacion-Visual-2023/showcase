@@ -17,8 +17,8 @@ function setup(){
     typeRadio.selected("protan")
     typeRadio.style('width', '80px')
     typeRadio.position(10,30)
-    inputImg = createFileInput(handleFile); inputImg.position(255, 5); inputImg.size(425);
-    createCanvas(725, 425);
+    inputImg = createFileInput(handleFile); inputImg.position(255, 5); inputImg.size(325);
+    createCanvas(625, 325);
     pixelDensity(1);
     
 }
