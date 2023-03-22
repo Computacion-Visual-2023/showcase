@@ -42,5 +42,5 @@ In this, two or three cone cell pigments do not work. People with cone monochrom
 
 It is present from birth. It does not contain any of the available pigments of cone cells. People with rod monochromacy see the world in black, white, and gray. People with rod monochromacy are photophobic and very uncomfortable in bright environments.
 
-{{< p5-iframe sketch="/showcase/sketches/color_blindness.js" width="835" height="555">}}
+{{< p5-iframe sketch="/showcase/sketches/color_blindness.js" width="735" height="425">}}
 
