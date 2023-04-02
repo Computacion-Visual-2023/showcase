@@ -1,5 +1,5 @@
-let colorBlindType, img, pixelRow, simImtensitySlider, typeRadio, intensity
-
+let colorBlindType, img, pixelRow, simImtensitySlider, typeRadio, intensity, downloadButton, canvas;
+let sliderLabel
 function preload(){
     img = loadImage('/showcase/sketches/mandrill.png');
 }
@@ -8,17 +8,35 @@ function setup(){
 
     simImtensitySlider = createSlider(0,1,0,0.1)
     simImtensitySlider.style('width', '80px');
-    simImtensitySlider.position(10, 10);
-
+    simImtensitySlider.position(10, 25);
+    sliderLabel = createDiv('Sim Intensity: '+simImtensitySlider.value())
+    sliderLabel.position(10, 10)
+    sliderLabel.style('font-family', 'Helvetica');
+    sliderLabel.style('font-strech', 'extra-expanded');
+    sliderLabel.style('font-weight', '800');
+    sliderLabel.style('font-size', '14px');
+    sliderLabel.style('color', '#ffffff');
+    
+    simImtensitySlider.input(function(){
+        sliderLabel.html('Sim Intensity: '+simImtensitySlider.value())
+    })
     typeRadio = createRadio()
-    typeRadio.option("protan")
-    typeRadio.option("deutan")
-    typeRadio.option("tritan")
-    typeRadio.selected("protan")
+    typeRadio.option("Protan")
+    typeRadio.option("Deutan")
+    typeRadio.option("Tritan")
+    typeRadio.selected("Protan")
     typeRadio.style('width', '80px')
-    typeRadio.position(10,30)
-    inputImg = createFileInput(handleFile); inputImg.position(255, 5); inputImg.size(325);
-    createCanvas(735, 425);
+    typeRadio.style('font-family', 'Helvetica');
+    typeRadio.style('font-strech', 'extra-expanded');
+    typeRadio.style('font-weight', '800');
+    typeRadio.style('font-size', '14px');
+    typeRadio.style('color', '#ffffff');
+    typeRadio.position(10,80)
+    inputImg = createFileInput(handleFile,"Upload"); inputImg.position(10, 200); inputImg.size(100);
+    downloadButton = createButton('Download'); downloadButton.position(10, 160); downloadButton.mousePressed(downloadImage);
+    downloadButton.size(80);
+    canvas = createCanvas(570, 421);
+    canvas.position(150,0);
     pixelDensity(1);
     
 }
@@ -130,16 +148,20 @@ function simIntensity(r,g,b,a,rs,gs,bs,intensity){
     var bk = Math.round(((1 - intensity) * b) + (intensity * bs))
     return [rk,gk,bk,a]
 }
+
+function downloadImage(){
+    saveCanvas('simulated'+colorBlindType+' '+intensity, 'png');
+}
 function fullProcess(r,g,b,a,colorBlindType, intensity){
     pixelRow = rgba2rgb(r,g,b,a)
     pixelRow = rgb2lms(pixelRow[0],pixelRow[1],pixelRow[2])
-    if(colorBlindType=="protan"){
+    if(colorBlindType=="Protan"){
        pixelRow = lmsForProtanopia(pixelRow[0],pixelRow[1],pixelRow[2])
     }
-    if(colorBlindType=="deutan"){
+    if(colorBlindType=="Deutan"){
         pixelRow = lmsForDeuteranopia(pixelRow[0],pixelRow[1],pixelRow[2])
     }
-    if(colorBlindType=="tritan"){
+    if(colorBlindType=="Tritan"){
        pixelRow = lmsForTritanopia(pixelRow[0],pixelRow[1],pixelRow[2])
     }
     pixelRow = lms2rgb(pixelRow[0],pixelRow[1],pixelRow[2])
