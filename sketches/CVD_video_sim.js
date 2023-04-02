@@ -1,7 +1,8 @@
-let colorBlindType, img, pixelRow, simImtensitySlider, typeRadio, intensity, downloadButton, canvas;
-let sliderLabel
+let colorBlindType, video, pixelRow, simImtensitySlider, typeRadio, intensity, downloadButton, canvas;
+let sliderLabel, playButton;
 function preload(){
-    img = loadImage('/showcase/sketches/mandrill.png');
+    video = createVideo(['/showcase/sketches/fingers.mov', '/showcase/sketches/fingers.webm']);
+    video.hide();
 }
 
 function setup(){
@@ -35,14 +36,18 @@ function setup(){
     inputImg = createFileInput(handleFile,"Upload"); inputImg.position(10, 200); inputImg.size(100);
     downloadButton = createButton('Download'); downloadButton.position(10, 160); downloadButton.mousePressed(downloadImage);
     downloadButton.size(80);
+    playButton = createButton('Play'); playButton.position(10, 240); playButton.mousePressed(playVideo);
+    playButton.size(80);
     canvas = createCanvas(570, 421);
     canvas.position(150,0);
     pixelDensity(1);
     
 }
-
+function playVideo() {
+    video.loop(); // set the video to loop and start playing
+}
 function draw(){
-    image(img,0,0,width, height)
+    image(video,0,0,width, height)
     loadPixels()
     intensity = simImtensitySlider.value()
     colorBlindType = typeRadio.value()
@@ -55,7 +60,7 @@ function draw(){
     }
     updatePixels()
 }
-function handleFile(file) { if (file.type === 'image') { img = createImg(file.data, ''); img.hide(); } }
+function handleFile(file) { if (file.type === 'image') { video = createImg(file.data, ''); video.hide(); } }
 
 function rgba2rgb(r, g, b, a){
     var r3 = Math.round(((1 - a) * 255) + (a * r))
