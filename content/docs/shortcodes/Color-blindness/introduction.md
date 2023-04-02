@@ -1,3 +1,6 @@
+---
+weight: 1
+---
 # Introduction
 
 During our research, we found that the popular video game known as **Fortnite** has a "colorblind mode" function, which is a feature that provides assistance to players who have difficulty distinguishing certain colors in the game, in order to better distinguish different shades. This tool offers three options: "protanopia," "deuteranopia," and "tritanopia," which are adjusted to cover different types of color blindness.
