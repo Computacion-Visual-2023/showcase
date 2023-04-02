@@ -1,4 +1,4 @@
-let colorBlindType, img, pixelRow, simImtensitySlider, typeRadio, intensity
+let colorBlindType, img, pixelRow, simImtensitySlider, typeRadio, intensity, downloadButton;
 
 function preload(){
     img = loadImage('/showcase/sketches/mandrill.png');
@@ -18,6 +18,7 @@ function setup(){
     typeRadio.style('width', '80px')
     typeRadio.position(10,30)
     inputImg = createFileInput(handleFile); inputImg.position(255, 5); inputImg.size(325);
+    downloadButton = createButton('Download'); downloadButton.position(10, 100); downloadButton.mousePressed(downloadImage);
     createCanvas(735, 425);
     pixelDensity(1);
     
@@ -129,6 +130,10 @@ function simIntensity(r,g,b,a,rs,gs,bs,intensity){
     var gk = Math.round(((1 - intensity) * g) + (intensity * gs))
     var bk = Math.round(((1 - intensity) * b) + (intensity * bs))
     return [rk,gk,bk,a]
+}
+
+function downloadImage(){
+    saveCanvas('simulated'+colorBlindType+' '+intensity, 'png');
 }
 function fullProcess(r,g,b,a,colorBlindType, intensity){
     pixelRow = rgba2rgb(r,g,b,a)
