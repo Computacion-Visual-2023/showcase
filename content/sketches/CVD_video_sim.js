@@ -1,5 +1,6 @@
 let colorBlindType, video, pixelRow, simImtensitySlider, typeRadio, intensity, downloadButton, canvas;
-let sliderLabel, playButton;
+let sliderLabel, playButton, capture;
+
 function preload(){
     video = createVideo(['/showcase/sketches/semagato.mp4']);
     video.hide();
@@ -39,6 +40,13 @@ function setup(){
     playButton = createButton('Play'); playButton.position(10, 240); playButton.mousePressed(playVideo);
     playButton.size(80);
     canvas = createCanvas(570, 421);
+    canvas.id('canvas')
+    capture = new CCapture({ 
+        format: 'png',
+        name: 'frames', 
+        framerate: 30, 
+        verbose: true 
+    });
     canvas.position(150,0);
     pixelDensity(1);
     

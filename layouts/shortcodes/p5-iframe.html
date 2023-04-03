@@ -5,7 +5,9 @@
 {{ $lib3 := .Get `lib3` }}
 {{ $lib4 := .Get `lib4` }}
 {{ $lib5 := .Get `lib5` }}
-
+{{- $capturejs := resources.Get "js/CCapture.all.min.js" -}}
+{{- $capturejs = $capturejs | resources.Minify -}}
+{{- $capturejs = $capturejs | resources.Fingerprint -}}
 <iframe
   id="{{ strings.TrimSuffix ".js" (path.Base $sketch) }}"
   style="width:{{ default "800" (.Get `width`) }}px; height:{{ default "600" (.Get `height`) }}px"
@@ -13,6 +15,7 @@
         <!DOCTYPE html>
         <html>
           <head>
+            <script src={{default $capturejs.RelPermalink}}></script>
             <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/{{ default $defver (.Get `ver`) }}/p5.min.js></script>
             <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/{{ default $defver (.Get `ver`) }}/addons/p5.sound.min.js></script>
             {{ if isset .Params "lib1" }} <script src={{ $lib1 }}></script> {{ end }}
