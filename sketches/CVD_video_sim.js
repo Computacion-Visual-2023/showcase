@@ -1,7 +1,7 @@
 let colorBlindType, video, pixelRow, simImtensitySlider, typeRadio, intensity, downloadButton, canvas;
 let sliderLabel, playButton;
 function preload(){
-    video = createVideo(['/showcase/sketches/semagato.mp4']);
+    video = createVideo(['/showcase/sketches/fingers.mov', '/showcase/sketches/fingers.webm']);
     video.hide();
 }
 
@@ -60,7 +60,7 @@ function draw(){
     }
     updatePixels()
 }
-function handleFile(file) { video = createVideo(file.data, ''); video.hide(); } 
+function handleFile(file) { if (file.type === 'image') { video = createImg(file.data, ''); video.hide(); } }
 
 function rgba2rgb(r, g, b, a){
     var r3 = Math.round(((1 - a) * 255) + (a * r))
