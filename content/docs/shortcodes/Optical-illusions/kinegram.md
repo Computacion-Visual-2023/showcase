@@ -18,6 +18,18 @@ The principles of making kinegram animations involve careful planning and execut
 
 The first step in making kinegram animations is to decide what to animate. Kinegrams work best with bright, bold, high-contrast images with no small details. Abstract shapes work better than cartoon characters, and solid silhouettes work better than line drawings. It is best if the animation is cyclic, beginning and ending at the same position. If it is not cyclic, there will be a jump each time the sequence repeats. A person running in place works better than a person running across the page. It is also best if the animation makes sense both forward and backward as you move the overlay back and forth. A person doing jumping jacks works better than a person running.
 
+t is also best if no part of the image moves too much between frames. If each frame is similar to the previous frame, the ghosts from adjacent frames are less noticeable. A person waving works well because the arm moves only a short distance, but a person doing cartwheels does not work well because the head, arms, and legs of the person move a long distance around the entire circle. The easiest animations are made of rigid shapes that merely move, rotate, expand/contract, or change colors. These are easiest because you only need to draw the shapes once and then you can just move them around.
+
+### Setting Parameters
+
+After selecting the images to animate, the next step is to set the parameters. The animator must decide on the animation cycle length, the grid unit size, the overall size of the images, and whether the stripes will be horizontal or vertical. For example, the animator may decide on a 12 frame cycle, a grid unit of 0.5 point (1 point = 1/72 inch), and an overall size of 4 inches high and wide. The next solid stripe must be the same as the animation cycle length. The clear stripes should be thinner than the solid stripes.
+
+### Interlace (interleave) the frames of the animation 
+
+Arrange thin slices from each frame into a single image that is the same size as the final kinegram. For example, if the kinegram will be 4 inches wide and 4 inches high, and you have 12 frames in the animation, you will need to create a composite image that is 4 inches wide and 48 inches high. This image is called the interlaced image.
+
+Arrange the slices in a sequence that corresponds to the order of frames in the animation. For example, if your animation shows a wheel turning counterclockwise, the first slice should be the slice that shows the wheel in the position it starts in. The last slice should be the slice that shows the wheel in the same position as the first slice. The slices in between should be arranged in the order they appear in the animation.
+
 ## Results
 
 {{< details title="Kinegram - Movement perception" open=false >}}
