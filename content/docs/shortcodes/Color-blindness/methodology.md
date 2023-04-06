@@ -3,7 +3,51 @@ weight: 2
 ---
 # Methodology
 
-## 1. Color spaces
+## Color Blindness Types
+
+### 1. Red- green type
+					
+
+#### Protanomaly
+    
+Due to the unusual occurrence of red cone pigments. In this type, red, orange, and yellow appear green, and the colors are not bright. This condition is benign and usually does not affect daily life.
+
+#### Protanopia 
+
+In this type, the red cone pigments stop working, and the red will appears as black. Some variants of orange, yellow and green all appear as yellow.
+
+Some opticians prefer to use a reverse color blind test to diagnose colour vision deficiency. In this test, the patients are asked to identify the coloured object in the pallet within dynamic colored background.
+
+#### Deuteranomaly
+
+This is the most common type found in people. It has an unusual green cone pigment. Yellow and green appear as red, purple and blue are difficult to identify. This condition is benign and usually does not affect daily life.
+
+#### Deuteranopia 
+In this, green cone pigments stop working. They see red colors as brownish-yellow and green as dark yellow.
+
+### 2. Blue-Yellow Type
+
+Blue-yellow type is rarer than red-green. In this, the blue cone pigment (triton) is either absent or has a limited function. There are two types of blue-yellow type.
+
+#### Tritanomaly 
+Blue cone pigments have less function. The blue color appears as green, and it cannot be easy to differentiate from pink to yellow and red.
+
+#### Tritanopia 
+People with Tritanopia lack blue cone cells. Blue appears green in this, and the yellow color looks like purple or light brown.
+
+### 3. Full (Monochromacy) Type
+
+People with full type (monochromacy) do not see any colors, and their clarity of vision can also be affected. There are two types of monochromacy
+
+#### Cone monochromacy
+
+In this, two or three cone cell pigments do not work. People with cone monochromacy have difficulty distinguishing between colors because the brain needs signals from different types of cones to see. This comparison is not possible when only one type of cone works.
+
+#### Rod Monochromacy
+
+It is present from birth. It does not contain any of the available pigments of cone cells. People with rod monochromacy see the world in black, white, and gray. People with rod monochromacy are photophobic and very uncomfortable in bright environments.
+
+## Color spaces
 
 ### CIEXYZ
 
@@ -17,14 +61,3 @@ CIEXYZ is based on the idea that any color that can be perceived by the human ey
 LMS is a color space that is used to describe the response of the three types of cone cells in the human eye to different wavelengths of light. It was developed by John A. Hunt, Vivianne C. Smith, and Lorne A. Johnston in 1992, and is based on the previous work of Pointer and Estevez.
 
 In this color space, LMS stands for the three types of cone cells in the human eye: L for long that responds to red light, M for medium that responds to green light, and S for short that responds to blue-violet light. The LMS color space describes how these cone cells respond to different wavelengths of light and how they combine to produce different colors.
-
-### RGBA
-
-The RGBA color model is a color model used in visual computing for the representation of colors in digital images. Each pixel of an RGBA image is composed of four components: red (R), green (G), blue (B), and alpha (A).
-
-The R component represents the intensity of the red color of the pixel, the G component represents the intensity of the green color, and the B component represents the intensity of the blue color. All of these components have a numerical range of 0 to 255. The A component represents the transparency of the pixel, with values ranging from 0 to 1.
-
-The combination of these four components allows for the creation of a wide variety of colors and visual effects in digital images.
-
-## 2. 
-

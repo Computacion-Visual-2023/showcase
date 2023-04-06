@@ -10,15 +10,15 @@ function setup(){
 
     simImtensitySlider = createSlider(0,1,0,0.1)
     simImtensitySlider.style('width', '80px');
-    simImtensitySlider.position(10, 25);
+    simImtensitySlider.position(10, 65);
     sliderLabel = createDiv('Sim Intensity: '+simImtensitySlider.value())
-    sliderLabel.position(10, 10)
+    sliderLabel.position(10, 50)
     sliderLabel.style('font-family', 'Helvetica');
     sliderLabel.style('font-strech', 'extra-expanded');
     sliderLabel.style('font-weight', '800');
     sliderLabel.style('font-size', '14px');
     sliderLabel.style('color', '#ffffff');
-    
+
     simImtensitySlider.input(function(){
         sliderLabel.html('Sim Intensity: '+simImtensitySlider.value())
     })
@@ -33,11 +33,11 @@ function setup(){
     typeRadio.style('font-weight', '800');
     typeRadio.style('font-size', '14px');
     typeRadio.style('color', '#ffffff');
-    typeRadio.position(10,80)
-    inputImg = createFileInput(handleFile,"Upload"); inputImg.position(10, 200); inputImg.size(100);
-    downloadButton = createButton('Download'); downloadButton.position(10, 160); downloadButton.mousePressed(downloadImage);
+    typeRadio.position(10,120)
+    inputImg = createFileInput(handleFile,"Upload"); inputImg.position(10, 240); inputImg.size(100);
+    downloadButton = createButton('Download'); downloadButton.position(10, 200); downloadButton.mousePressed(downloadImage);
     downloadButton.size(80);
-    playButton = createButton('Play'); playButton.position(10, 240); playButton.mousePressed(playVideo);
+    playButton = createButton('Play'); playButton.position(10, 280); playButton.mousePressed(playVideo);
     playButton.size(80);
     canvas = createCanvas(570, 421);
     canvas.id('canvas')
@@ -68,7 +68,7 @@ function draw(){
     }
     updatePixels()
 }
-function handleFile(file) { video = createVideo(file.data, ''); video.hide(); } 
+function handleFile(file) { video = createVideo(file.data, ''); video.hide(); }
 
 function rgba2rgb(r, g, b, a){
     var r3 = Math.round(((1 - a) * 255) + (a * r))
@@ -163,7 +163,7 @@ function simIntensity(r,g,b,a,rs,gs,bs,intensity){
 }
 
 function downloadImage(){
-    saveCanvas('simulated'+colorBlindType+' '+intensity, 'png');
+    saveGif('mySketch', 5);
 }
 function fullProcess(r,g,b,a,colorBlindType, intensity){
     pixelRow = rgba2rgb(r,g,b,a)
