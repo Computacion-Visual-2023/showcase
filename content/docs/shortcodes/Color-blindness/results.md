@@ -9,3 +9,6 @@ weight: 3
 ## CVD Video Simulator
 {{< p5-iframe sketch="/showcase/sketches/CVD_video_sim.js" width="725" height="425">}}
 
+## CVD Image Corrector
+{{< p5-iframe sketch="/showcase/sketches/CVD_video_sim.js" width="725" height="425">}}
+
