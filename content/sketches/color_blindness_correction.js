@@ -8,9 +8,9 @@ function setup(){
 
     simImtensitySlider = createSlider(0,1,0,0.1)
     simImtensitySlider.style('width', '80px');
-    simImtensitySlider.position(10, 65);
+    simImtensitySlider.position(10, 55);
     sliderLabel = createDiv('Sim Intensity: '+simImtensitySlider.value())
-    sliderLabel.position(10, 50)
+    sliderLabel.position(10, 40)
     sliderLabel.style('font-family', 'Helvetica');
     sliderLabel.style('font-strech', 'extra-expanded');
     sliderLabel.style('font-weight', '800');
@@ -36,9 +36,9 @@ function setup(){
     })
     simWaveSlider2 = createSlider(0,1,0,0.1)
     simWaveSlider2.style('width', '80px');
-    simWaveSlider2.position(10, 95);
+    simWaveSlider2.position(10, 105);
     sliderLabel = createDiv('Wider Wave: '+ simWaveSlider2.value())
-    sliderLabel.position(10, 80)
+    sliderLabel.position(10, 100)
     sliderLabel.style('font-family', 'Helvetica');
     sliderLabel.style('font-strech', 'extra-expanded');
     sliderLabel.style('font-weight', '800');
@@ -59,7 +59,7 @@ function setup(){
     typeRadio.style('font-weight', '800');
     typeRadio.style('font-size', '14px');
     typeRadio.style('color', '#ffffff');
-    typeRadio.position(10,120)
+    typeRadio.position(10,150)
     inputImg = createFileInput(handleFile,"Upload"); inputImg.position(10, 240); inputImg.size(100);
     downloadButton = createButton('Download'); downloadButton.position(10, 200); downloadButton.mousePressed(downloadImage);
     downloadButton.size(80);
