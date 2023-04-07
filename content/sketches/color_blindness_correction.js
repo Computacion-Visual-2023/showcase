@@ -11,10 +11,10 @@ function setup(){
     simImtensitySlider.position(10, 10);
     simWaveSlider = createSlider(0.1,0.9,0,0.1)
     simWaveSlider.style('width', '80px');
-    simWaveSlider.position(10, 30);
+    simWaveSlider.position(20, 30);
     simWaveSlider2 = createSlider(1.1,1.9,0,0.1)
     simWaveSlider2.style('width', '80px');
-    simWaveSlider2.position(10, 50);
+    simWaveSlider2.position(30, 50);
 
     typeRadio = createRadio()
     typeRadio.option("protan")
@@ -22,7 +22,7 @@ function setup(){
     typeRadio.option("tritan")
     typeRadio.selected("protan")
     typeRadio.style('width', '80px')
-    typeRadio.position(10,90)
+    typeRadio.position(40,90)
     inputImg = createFileInput(handleFile); inputImg.position(255, 5); inputImg.size(325);
     createCanvas(735, 425);
     pixelDensity(1);
