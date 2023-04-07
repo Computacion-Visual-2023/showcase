@@ -62,6 +62,9 @@ function setup(){
     typeRadio.position(10,150)
     inputImg = createFileInput(handleFile,"Upload"); inputImg.position(10, 240); inputImg.size(100);
     downloadButton = createButton('Download'); downloadButton.position(10, 200); downloadButton.mousePressed(downloadImage);
+    function downloadImage(){
+        saveCanvas('simulated'+colorBlindType+' '+intensity, 'png');
+    }
     downloadButton.size(80);
     canvas = createCanvas(570, 421);
     canvas.position(150,0);
@@ -196,6 +199,3 @@ function fullProcess(r,g,b,a,colorBlindType, intensity,widerWave,smallerWave){
     return pixelRow
 }
 
-function downloadImage(){
-    saveCanvas('simulated'+colorBlindType+' '+intensity, 'png');
-}
