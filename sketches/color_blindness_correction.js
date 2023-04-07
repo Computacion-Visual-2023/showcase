@@ -1,5 +1,5 @@
-let colorBlindType, img, pixelRow, simImtensitySlider, typeRadio, intensity, simWaveSlider2,simWaveSlider
-
+let colorBlindType, img, pixelRow, simImtensitySlider, typeRadio, intensity, simWaveSlider2,simWaveSlider, downloadButton, canvas;
+let sliderLabel
 function preload(){
     img = loadImage('/showcase/sketches/mandrill.png');
 }
@@ -8,23 +8,63 @@ function setup(){
 
     simImtensitySlider = createSlider(0,1,0,0.1)
     simImtensitySlider.style('width', '80px');
-    simImtensitySlider.position(10, 10);
-    simWaveSlider = createSlider(0.1,0.9,0,0.1)
+    simImtensitySlider.position(10, 65);
+    sliderLabel = createDiv('Sim Intensity: '+simImtensitySlider.value())
+    sliderLabel.position(10, 50)
+    sliderLabel.style('font-family', 'Helvetica');
+    sliderLabel.style('font-strech', 'extra-expanded');
+    sliderLabel.style('font-weight', '800');
+    sliderLabel.style('font-size', '14px');
+    sliderLabel.style('color', '#ffffff');
+    
+    simImtensitySlider.input(function(){
+        sliderLabel.html('Sim Intensity: '+simImtensitySlider.value())
+    })
+    simWaveSlider = createSlider(0,1,0,0.1)
     simWaveSlider.style('width', '80px');
-    simWaveSlider.position(20, 30);
-    simWaveSlider2 = createSlider(1.1,1.9,0,0.1)
+    simWaveSlider.position(10, 85);
+    sliderLabel = createDiv('Smaller Wave: '+ simWaveSlider.value())
+    sliderLabel.position(10, 70)
+    sliderLabel.style('font-family', 'Helvetica');
+    sliderLabel.style('font-strech', 'extra-expanded');
+    sliderLabel.style('font-weight', '800');
+    sliderLabel.style('font-size', '14px');
+    sliderLabel.style('color', '#ffffff');
+    
+    simImtensitySlider.input(function(){
+        sliderLabel.html('Smaller Wave: '+ simWaveSlider.value())
+    })
+    simWaveSlider2 = createSlider(0,1,0,0.1)
     simWaveSlider2.style('width', '80px');
-    simWaveSlider2.position(30, 50);
-
+    simWaveSlider2.position(10, 95);
+    sliderLabel = createDiv('Wider Wave: '+ simWaveSlider2.value())
+    sliderLabel.position(10, 80)
+    sliderLabel.style('font-family', 'Helvetica');
+    sliderLabel.style('font-strech', 'extra-expanded');
+    sliderLabel.style('font-weight', '800');
+    sliderLabel.style('font-size', '14px');
+    sliderLabel.style('color', '#ffffff');
+    
+    simImtensitySlider.input(function(){
+        sliderLabel.html('Wider Wave: '+ simWaveSlider2.value())
+    })
     typeRadio = createRadio()
-    typeRadio.option("protan")
-    typeRadio.option("deutan")
-    typeRadio.option("tritan")
-    typeRadio.selected("protan")
+    typeRadio.option("Protan")
+    typeRadio.option("Deutan")
+    typeRadio.option("Tritan")
+    typeRadio.selected("Protan")
     typeRadio.style('width', '80px')
-    typeRadio.position(40,90)
-    inputImg = createFileInput(handleFile); inputImg.position(255, 5); inputImg.size(325);
-    createCanvas(735, 425);
+    typeRadio.style('font-family', 'Helvetica');
+    typeRadio.style('font-strech', 'extra-expanded');
+    typeRadio.style('font-weight', '800');
+    typeRadio.style('font-size', '14px');
+    typeRadio.style('color', '#ffffff');
+    typeRadio.position(10,120)
+    inputImg = createFileInput(handleFile,"Upload"); inputImg.position(10, 240); inputImg.size(100);
+    downloadButton = createButton('Download'); downloadButton.position(10, 200); downloadButton.mousePressed(downloadImage);
+    downloadButton.size(80);
+    canvas = createCanvas(570, 421);
+    canvas.position(150,0);
     pixelDensity(1);
     
 }
@@ -46,6 +86,9 @@ function draw(){
     updatePixels()
 }
 function handleFile(file) { if (file.type === 'image') { img = createImg(file.data, ''); img.hide(); } }
+function preload(){
+    img = loadImage('/showcase/sketches/mandrill.png');
+}
 
 function rgba2rgb(r, g, b, a){
     var r3 = Math.round(((1 - a) * 255) + (a * r))
