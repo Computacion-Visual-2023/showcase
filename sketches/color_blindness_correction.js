@@ -86,9 +86,6 @@ function draw(){
     updatePixels()
 }
 function handleFile(file) { if (file.type === 'image') { img = createImg(file.data, ''); img.hide(); } }
-function preload(){
-    img = loadImage('/showcase/sketches/mandrill.png');
-}
 
 function rgba2rgb(r, g, b, a){
     var r3 = Math.round(((1 - a) * 255) + (a * r))
@@ -197,4 +194,8 @@ function fullProcess(r,g,b,a,colorBlindType, intensity,widerWave,smallerWave){
     pixelRow = rgb2rgba(pixelRow[0],pixelRow[1],pixelRow[2],a)
     pixelRow = simIntensity(r,g,b,a, pixelRow[0],pixelRow[1],pixelRow[2],intensity)
     return pixelRow
+}
+
+function downloadImage(){
+    saveCanvas('simulated'+colorBlindType+' '+intensity, 'png');
 }
