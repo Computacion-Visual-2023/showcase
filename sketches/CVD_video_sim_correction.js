@@ -1,52 +1,26 @@
-let colorBlindType, img, pixelRow, simImtensitySlider, typeRadio, intensity, simWaveSlider2,simWaveSlider, downloadButton, canvas;
-let sliderLabel, sliderLabel1,sliderLabel2
+let colorBlindType, video, pixelRow, simImtensitySlider, typeRadio, intensity, downloadButton, canvas;
+let sliderLabel, playButton
+
 function preload(){
-    img = loadImage('/showcase/sketches/mandrill.png');
+    video = createVideo(['/showcase/sketches/semagato.mp4']);
+    video.hide();
 }
 
 function setup(){
 
     simImtensitySlider = createSlider(0,1,0,0.1)
     simImtensitySlider.style('width', '80px');
-    simImtensitySlider.position(10, 55);
+    simImtensitySlider.position(10, 65);
     sliderLabel = createDiv('Sim Intensity: '+simImtensitySlider.value())
-    sliderLabel.position(10, 40)
+    sliderLabel.position(10, 50)
     sliderLabel.style('font-family', 'Helvetica');
     sliderLabel.style('font-strech', 'extra-expanded');
     sliderLabel.style('font-weight', '800');
     sliderLabel.style('font-size', '14px');
     sliderLabel.style('color', '#ffffff');
-    
+
     simImtensitySlider.input(function(){
         sliderLabel.html('Sim Intensity: '+simImtensitySlider.value())
-    })
-    simWaveSlider = createSlider(0.1,0.9,0,0.1)
-    simWaveSlider.style('width', '80px');
-    simWaveSlider.position(10, 95);
-    sliderLabel1 = createDiv('Smaller Wave: '+ simWaveSlider.value())
-    sliderLabel1.position(10, 80)
-    sliderLabel1.style('font-family', 'Helvetica');
-    sliderLabel1.style('font-strech', 'extra-expanded');
-    sliderLabel1.style('font-weight', '800');
-    sliderLabel1.style('font-size', '14px');
-    sliderLabel1.style('color', '#ffffff');
-    
-    simImtensitySlider.input(function(){
-        sliderLabel1.html('Smaller Wave: '+ simWaveSlider.value())
-    })
-    simWaveSlider2 = createSlider(1.1,1.9,0,0.1)
-    simWaveSlider2.style('width', '80px');
-    simWaveSlider2.position(10, 120);
-    sliderLabel2= createDiv('Wider Wave: '+ simWaveSlider2.value())
-    sliderLabel2.position(10, 105)
-    sliderLabel2.style('font-family', 'Helvetica');
-    sliderLabel2.style('font-strech', 'extra-expanded');
-    sliderLabel2.style('font-weight', '800');
-    sliderLabel2.style('font-size', '14px');
-    sliderLabel2.style('color', '#ffffff');
-    
-    simImtensitySlider.input(function(){
-        sliderLabel2.html('Wider Wave: '+ simWaveSlider2.value())
     })
     typeRadio = createRadio()
     typeRadio.option("Protan")
@@ -59,28 +33,28 @@ function setup(){
     typeRadio.style('font-weight', '800');
     typeRadio.style('font-size', '14px');
     typeRadio.style('color', '#ffffff');
-    typeRadio.position(10,150)
+    typeRadio.position(10,120)
     inputImg = createFileInput(handleFile,"Upload"); inputImg.position(10, 240); inputImg.size(100);
     downloadButton = createButton('Download'); downloadButton.position(10, 200); downloadButton.mousePressed(downloadImage);
-    function downloadImage(){
-        saveCanvas('simulated'+colorBlindType+' '+intensity, 'png');
-    }
     downloadButton.size(80);
+    playButton = createButton('Play'); playButton.position(10, 280); playButton.mousePressed(playVideo);
+    playButton.size(80);
     canvas = createCanvas(570, 421);
+    canvas.id('canvas')
     canvas.position(150,0);
     pixelDensity(1);
     
 }
-
+function playVideo() {
+    video.loop(); // set the video to loop and start playing
+}
 function draw(){
-    image(img,0,0,width, height)
+    image(video,0,0,width, height)
     loadPixels()
     intensity = simImtensitySlider.value()
-    widerWave = simWaveSlider2.value()
-    smallerWave = simWaveSlider.value()
     colorBlindType = typeRadio.value()
     for (let i = 0; i < pixels.length; i+=4) {
-        pixelRow = fullProcess(pixels[i],pixels[i+1],pixels[i+2],pixels[i+3],colorBlindType,intensity,widerWave,smallerWave)
+        pixelRow = fullProcess(pixels[i],pixels[i+1],pixels[i+2],pixels[i+3],colorBlindType,intensity)
         pixels[i] = pixelRow[0]
         pixels[i+1] = pixelRow[1]
         pixels[i+2] = pixelRow[2]
@@ -88,7 +62,7 @@ function draw(){
     }
     updatePixels()
 }
-function handleFile(file) { if (file.type === 'image') { img = createImg(file.data, ''); img.hide(); } }
+function handleFile(file) { video = createVideo(file.data, ''); video.hide(); }
 
 function rgba2rgb(r, g, b, a){
     var r3 = Math.round(((1 - a) * 255) + (a * r))
@@ -104,53 +78,53 @@ function rgb2lms(r,g,b){
     return [l,m,s]
 }
 
-function lmsForProtanopia(l,m,s,widerWave,smallerWave){
+function lmsForProtanopia(l,m,s){
     var lp = 0
     var mp = 0
     var sp = 0
     if(s<=m){
         lp = (1.20800*m) - (0.20797*s)
-        mp = m * widerWave
-        sp = s *smallerWave
+        mp = m
+        sp = s
     }
     else{
         lp = (1.22023*m) - (0.22020*s)
-        mp = m *widerWave
-        sp = s *smallerWave
+        mp = m
+        sp = s
     }
     return [lp,mp,sp]
 }
 
-function lmsForDeuteranopia(l,m,s,widerWave,smallerWave){
+function lmsForDeuteranopia(l,m,s){
     var ld = 0
     var md = 0
     var sd = 0
     if(s<=l){
-        ld = l *widerWave
+        ld = l
         md = (0.82781*l) + (0.17216*s)
-        sd = s *smallerWave
+        sd = s
     }
     else{
-        ld = l * widerWave
+        ld = l
         md = (0.81951*l) + (0.18046*s)
-        sd = s * smallerWave
+        sd = s
     }
     return [ld,md,sd]
 }
 
-function lmsForTritanopia(l,m,s, widerWave, smallerWave){
+function lmsForTritanopia(l,m,s){
     var lt = 0
     var mt = 0
     var st = 0
     //console.log("l "+ l+" aaaa "+m)
     if(m>l){
-        lt = l *widerWave
-        mt = m *smallerWave
+        lt = l
+        mt = m
         st = (-0.87504*l) + (1.87503*m)
     }
     else{
-        lt = l *widerWave
-        mt = m * smallerWave
+        lt = l
+        mt = m
         st = (-0.52543*l) + (1.52540*m)
     }
     return [lt,mt,st]
@@ -181,21 +155,24 @@ function simIntensity(r,g,b,a,rs,gs,bs,intensity){
     var bk = Math.round(((1 - intensity) * b) + (intensity * bs))
     return [rk,gk,bk,a]
 }
-function fullProcess(r,g,b,a,colorBlindType, intensity,widerWave,smallerWave){
+
+function downloadImage(){
+    saveGif('mySketch', 5);
+}
+function fullProcess(r,g,b,a,colorBlindType, intensity){
     pixelRow = rgba2rgb(r,g,b,a)
     pixelRow = rgb2lms(pixelRow[0],pixelRow[1],pixelRow[2])
-    if(colorBlindType=="protan"){
-       pixelRow = lmsForProtanopia(pixelRow[0],pixelRow[1],pixelRow[2],widerWave,smallerWave)
+    if(colorBlindType=="Protan"){
+       pixelRow = lmsForProtanopia(pixelRow[0],pixelRow[1],pixelRow[2])
     }
-    if(colorBlindType=="deutan"){
-        pixelRow = lmsForDeuteranopia(pixelRow[0],pixelRow[1],pixelRow[2],widerWave,smallerWave)
+    if(colorBlindType=="Deutan"){
+        pixelRow = lmsForDeuteranopia(pixelRow[0],pixelRow[1],pixelRow[2])
     }
-    if(colorBlindType=="tritan"){
-       pixelRow = lmsForTritanopia(pixelRow[0],pixelRow[1],pixelRow[2],widerWave,smallerWave)
+    if(colorBlindType=="Tritan"){
+       pixelRow = lmsForTritanopia(pixelRow[0],pixelRow[1],pixelRow[2])
     }
     pixelRow = lms2rgb(pixelRow[0],pixelRow[1],pixelRow[2])
     pixelRow = rgb2rgba(pixelRow[0],pixelRow[1],pixelRow[2],a)
     pixelRow = simIntensity(r,g,b,a, pixelRow[0],pixelRow[1],pixelRow[2],intensity)
     return pixelRow
 }
-
