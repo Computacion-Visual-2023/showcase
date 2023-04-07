@@ -20,11 +20,11 @@ function setup(){
     simImtensitySlider.input(function(){
         sliderLabel.html('Sim Intensity: '+simImtensitySlider.value())
     })
-    simWaveSlider = createSlider(0.1,0.9,0,0.1)
+    simWaveSlider = createSlider(0.1,0.9,0.1,0.1)
     simWaveSlider.style('width', '80px');
-    simWaveSlider.position(10, 95);
+    simWaveSlider.position(10, 110);
     sliderLabel1 = createDiv('Smaller Wave: '+ simWaveSlider.value())
-    sliderLabel1.position(10, 80)
+    sliderLabel1.position(10, 90)
     sliderLabel1.style('font-family', 'Helvetica');
     sliderLabel1.style('font-strech', 'extra-expanded');
     sliderLabel1.style('font-weight', '800');
@@ -34,11 +34,11 @@ function setup(){
     simImtensitySlider.input(function(){
         sliderLabel1.html('Smaller Wave: '+ simWaveSlider.value())
     })
-    simWaveSlider2 = createSlider(1.1,1.9,0,0.1)
+    simWaveSlider2 = createSlider(1.1,1.9,1.1,0.1)
     simWaveSlider2.style('width', '80px');
-    simWaveSlider2.position(10, 120);
+    simWaveSlider2.position(10, 145);
     sliderLabel2= createDiv('Wider Wave: '+ simWaveSlider2.value())
-    sliderLabel2.position(10, 105)
+    sliderLabel2.position(10, 130)
     sliderLabel2.style('font-family', 'Helvetica');
     sliderLabel2.style('font-strech', 'extra-expanded');
     sliderLabel2.style('font-weight', '800');
@@ -59,9 +59,9 @@ function setup(){
     typeRadio.style('font-weight', '800');
     typeRadio.style('font-size', '14px');
     typeRadio.style('color', '#ffffff');
-    typeRadio.position(10,150)
-    inputImg = createFileInput(handleFile,"Upload"); inputImg.position(10, 240); inputImg.size(100);
-    downloadButton = createButton('Download'); downloadButton.position(10, 200); downloadButton.mousePressed(downloadImage);
+    typeRadio.position(10,180)
+    inputImg = createFileInput(handleFile,"Upload"); inputImg.position(10, 260); inputImg.size(100);
+    downloadButton = createButton('Download'); downloadButton.position(10, 220); downloadButton.mousePressed(downloadImage);
     function downloadImage(){
         saveCanvas('simulated'+colorBlindType+' '+intensity, 'png');
     }
