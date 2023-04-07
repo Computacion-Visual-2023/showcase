@@ -1,5 +1,5 @@
 let colorBlindType, img, pixelRow, simImtensitySlider, typeRadio, intensity, simWaveSlider2,simWaveSlider, downloadButton, canvas;
-let sliderLabel
+let sliderLabel, sliderLabel1,sliderLabel2
 function preload(){
     img = loadImage('/showcase/sketches/mandrill.png');
 }
@@ -23,30 +23,30 @@ function setup(){
     simWaveSlider = createSlider(0,1,0,0.1)
     simWaveSlider.style('width', '80px');
     simWaveSlider.position(10, 85);
-    sliderLabel = createDiv('Smaller Wave: '+ simWaveSlider.value())
-    sliderLabel.position(10, 70)
-    sliderLabel.style('font-family', 'Helvetica');
-    sliderLabel.style('font-strech', 'extra-expanded');
-    sliderLabel.style('font-weight', '800');
-    sliderLabel.style('font-size', '14px');
-    sliderLabel.style('color', '#ffffff');
+    sliderLabel1 = createDiv('Smaller Wave: '+ simWaveSlider.value())
+    sliderLabel1.position(10, 70)
+    sliderLabel1.style('font-family', 'Helvetica');
+    sliderLabel1.style('font-strech', 'extra-expanded');
+    sliderLabel1.style('font-weight', '800');
+    sliderLabel1.style('font-size', '14px');
+    sliderLabel1.style('color', '#ffffff');
     
     simImtensitySlider.input(function(){
-        sliderLabel.html('Smaller Wave: '+ simWaveSlider.value())
+        sliderLabel1.html('Smaller Wave: '+ simWaveSlider.value())
     })
     simWaveSlider2 = createSlider(0,1,0,0.1)
     simWaveSlider2.style('width', '80px');
     simWaveSlider2.position(10, 105);
-    sliderLabel = createDiv('Wider Wave: '+ simWaveSlider2.value())
-    sliderLabel.position(10, 100)
-    sliderLabel.style('font-family', 'Helvetica');
-    sliderLabel.style('font-strech', 'extra-expanded');
-    sliderLabel.style('font-weight', '800');
-    sliderLabel.style('font-size', '14px');
-    sliderLabel.style('color', '#ffffff');
+    sliderLabel2= createDiv('Wider Wave: '+ simWaveSlider2.value())
+    sliderLabel2.position(10, 100)
+    sliderLabel2.style('font-family', 'Helvetica');
+    sliderLabel2.style('font-strech', 'extra-expanded');
+    sliderLabel2.style('font-weight', '800');
+    sliderLabel2.style('font-size', '14px');
+    sliderLabel2.style('color', '#ffffff');
     
     simImtensitySlider.input(function(){
-        sliderLabel.html('Wider Wave: '+ simWaveSlider2.value())
+        sliderLabel2.html('Wider Wave: '+ simWaveSlider2.value())
     })
     typeRadio = createRadio()
     typeRadio.option("Protan")
