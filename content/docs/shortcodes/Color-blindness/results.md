@@ -12,3 +12,6 @@ weight: 3
 ## CVD Image Corrector
 {{< p5-iframe sketch="/showcase/sketches/color_blindness_correction.js" width="725" height="425">}}
 
+## CVD Video Corrector
+{{< p5-iframe sketch="/showcase/sketches/CVD_video_correction.js" width="725" height="425">}}
+
