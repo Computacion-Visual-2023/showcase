@@ -74,4 +74,4 @@ G = ((1 - a) * 255) + (a * g)
 B = ((1 - a) * 255) + (a * b)
 
 Then those values get translated into the LMS color space so we can work on the wavelengths that affect each CVD mentioned above
-![LMS](LSM.svg "lms")
+![LMS](/content/sketches/LSM.svg "lms")
