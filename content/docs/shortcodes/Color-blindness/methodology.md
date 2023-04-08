@@ -61,3 +61,13 @@ CIEXYZ is based on the idea that any color that can be perceived by the human ey
 LMS is a color space that is used to describe the response of the three types of cone cells in the human eye to different wavelengths of light. It was developed by John A. Hunt, Vivianne C. Smith, and Lorne A. Johnston in 1992, and is based on the previous work of Pointer and Estevez.
 
 In this color space, LMS stands for the three types of cone cells in the human eye: L for long that responds to red light, M for medium that responds to green light, and S for short that responds to blue-violet light. The LMS color space describes how these cone cells respond to different wavelengths of light and how they combine to produce different colors.
+
+## Process
+
+For this work we focused on simulating and correcting three types of color blindness, Protanopia, Deuteranopia and Tritanopia.
+The Simulation starts by taking the RGBA values of the loaded image and saving them on 4 different arrays, then we eliminate the alpha channel by transforming the RGB values to the values with the correct opacity.
+{{< katex [display] [class="text-center"]  >}}
+R = ((1 - a) * 255) + (a * r)
+G = ((1 - a) * 255) + (a * g)
+B = ((1 - a) * 255) + (a * b)
+{{< /katex >}}
