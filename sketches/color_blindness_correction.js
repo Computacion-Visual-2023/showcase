@@ -182,6 +182,7 @@ function simIntensity(r,g,b,a,rs,gs,bs,intensity){
     return [rk,gk,bk,a]
 }
 function fullProcess(r,g,b,a,colorBlindType, intensity,widerWave,smallerWave){
+    console.log("entra full process")
     pixelRow = rgba2rgb(r,g,b,a)
     pixelRow = rgb2lms(pixelRow[0],pixelRow[1],pixelRow[2])
     if(colorBlindType=="protan"){
