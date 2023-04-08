@@ -66,8 +66,8 @@ In this color space, LMS stands for the three types of cone cells in the human e
 
 For this work we focused on simulating and correcting three types of color blindness, Protanopia, Deuteranopia and Tritanopia.
 The Simulation starts by taking the RGBA values of the loaded image and saving them on 4 different arrays, then we eliminate the alpha channel by transforming the RGB values to the values with the correct opacity.
-$
+$$
 R = ((1 - a) * 255) + (a * r)
 G = ((1 - a) * 255) + (a * g)
 B = ((1 - a) * 255) + (a * b)
-$
+$$
