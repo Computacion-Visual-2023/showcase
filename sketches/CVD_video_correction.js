@@ -1,7 +1,7 @@
 let colorBlindType, img, pixelRow, simImtensitySlider, typeRadio, intensity, simWaveSlider2,simWaveSlider;
 let sliderLabel1,sliderLabel2, sliderLabel3, inputImg, widerWave, smallerWave, playButton;
 function preload(){
-    img = loadImage('/showcase/sketches/mandrill.png');
+    img = loadImage(['/showcase/sketches/semagato.mp4']);
 }
 
 function setup(){
