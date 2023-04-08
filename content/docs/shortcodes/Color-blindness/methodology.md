@@ -77,14 +77,17 @@ Then those values get translated into the LMS color space so we can work on the 
 
 ![LMS](/showcase/images/LMS.png)
 
-For Protanopia the L wavelength is affected.
+For Protanopia, the L wavelength is affected.
 
 ![Protanopia](/showcase/images/prota.png) 
 
-For Deuteranopia the M wavelength is affected.
+For Deuteranopia, the M wavelength is affected.
 
 ![Deuteranopia](/showcase/images/deute.png) 
 
-For Tritanopia the S wavelength is affected.
+For Tritanopia,the S wavelength is affected.
 
-![Deuteranopia](/showcase/images/trita.png) 
+![Deuteranopia](/showcase/images/trita.png)
+
+After this, we change the color space back to RBG and RGBA.
+For the color correction we follow a similar process, but once we have transformed the correct wavelength for the specific CVD we add another step. We widen the difference between the wavelength channels that are not affected by the condition, that way enlarging the color spectrum that the user can observe within the image. This solution is inspired by the way color blindness glasses like the "EnChroma" work, filtering the visible wavelengths for the user.
