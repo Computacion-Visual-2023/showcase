@@ -75,12 +75,16 @@ B = ((1 - a) * 255) + (a * b)
 
 Then those values get translated into the LMS color space so we can work on the wavelengths that affect each CVD.
 
-![LMS](/showcase/images/LSM.svg)
+![LMS](/showcase/images/LMS.png)
 
 For Protanopia the L wavelength is affected.
 
-<img src="https://github.com/Computacion-Visual-2023/showcase/blob/main/static/images/protanope.svg" alt="prota" />
+![Protanopia](/showcase/images/prota.png) 
+
 For Deuteranopia the M wavelength is affected.
-<img src="https://github.com/Computacion-Visual-2023/showcase/blob/main/static/images/deute.svg" alt="deute" />
+
+![Deuteranopia](/showcase/images/deute.png) 
+
 For Tritanopia the S wavelength is affected.
-<img src="https://github.com/Computacion-Visual-2023/showcase/blob/main/static/images/trita.svg" alt="trita" />
+
+![Deuteranopia](/showcase/images/trita.png) 
