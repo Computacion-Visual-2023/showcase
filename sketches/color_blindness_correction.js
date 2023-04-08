@@ -1,5 +1,5 @@
-let colorBlindType, img, pixelRow, simImtensitySlider, typeRadio, intensity, simWaveSlider2,simWaveSlider
-
+let colorBlindType, img, pixelRow, simImtensitySlider, typeRadio, intensity, simWaveSlider2,simWaveSlider;
+let sliderLabel1,sliderLabel2, sliderLabel3, inputImg, widerWave, smallerWave;
 function preload(){
     img = loadImage('/showcase/sketches/mandrill.png');
 }
@@ -8,43 +8,102 @@ function setup(){
 
     simImtensitySlider = createSlider(0,1,0,0.1)
     simImtensitySlider.style('width', '80px');
-    simImtensitySlider.position(10, 10);
+    simImtensitySlider.position(10, 65);
+    
+    sliderLabel1= createDiv('Sim Intensity:' + simImtensitySlider.value())
+    sliderLabel1.position(10, 50)
+    sliderLabel1.style('font-family', 'Helvetica');
+    sliderLabel1.style('font-strech', 'extra-expanded');
+    sliderLabel1.style('font-weight', '800');
+    sliderLabel1.style('font-size', '14px');
+    sliderLabel1.style('color', '#ffffff');
+
     simWaveSlider = createSlider(0.1,0.9,0,0.1)
     simWaveSlider.style('width', '80px');
-    simWaveSlider.position(20, 30);
+    simWaveSlider.position(10, 105);
+
+    sliderLabel2 = createDiv('Smaller Wave:' +simWaveSlider.value())
+    sliderLabel2.position(10, 90)
+    sliderLabel2.style('font-family', 'Helvetica');
+    sliderLabel2.style('font-strech', 'extra-expanded');
+    sliderLabel2.style('font-weight', '800');
+    sliderLabel2.style('font-size', '14px');
+    sliderLabel2.style('color', '#ffffff');
+
+
     simWaveSlider2 = createSlider(1.1,1.9,0,0.1)
     simWaveSlider2.style('width', '80px');
-    simWaveSlider2.position(30, 50);
+    simWaveSlider2.position(10, 145);
+
+    sliderLabel3 = createDiv('Wider Wave:' +simWaveSlider2.value())
+    sliderLabel3.position(10, 130)
+    sliderLabel3.style('font-family', 'Helvetica');
+    sliderLabel3.style('font-strech', 'extra-expanded');
+    sliderLabel3.style('font-weight', '800');
+    sliderLabel3.style('font-size', '14px');
+    sliderLabel3.style('color', '#ffffff');
+
+    simImtensitySlider.input(function(){
+        sliderLabel1.html('Sim Intensity: '+simImtensitySlider.value())
+    })
+    simWaveSlider.input(function(){
+        sliderLabel2.html('Small Wave: '+simWaveSlider.value())
+    })
+    simWaveSlider2.input(function(){
+        sliderLabel3.html('Wider Wave: '+simWaveSlider2.value())
+    })
 
     typeRadio = createRadio()
-    typeRadio.option("protan")
-    typeRadio.option("deutan")
-    typeRadio.option("tritan")
-    typeRadio.selected("protan")
+    typeRadio.option("Protan")
+    typeRadio.option("Deutan")
+    typeRadio.option("Tritan")
+    typeRadio.selected("Protan")
     typeRadio.style('width', '80px')
-    typeRadio.position(40,90)
-    inputImg = createFileInput(handleFile); inputImg.position(255, 5); inputImg.size(325);
-    createCanvas(735, 425);
+
+    typeRadio.style('font-family', 'Helvetica');
+    typeRadio.style('font-strech', 'extra-expanded');
+    typeRadio.style('font-weight', '800');
+    typeRadio.style('font-size', '14px');
+    typeRadio.style('color', '#ffffff');
+    typeRadio.position(10,180)
+
+    inputImg = createFileInput(handleFile,"Upload"); inputImg.position(10, 290); inputImg.size(100);
+    downloadButton = createButton('Download'); downloadButton.position(10, 260); downloadButton.mousePressed(downloadImage);
+    downloadButton.size(80);
+    canvas = createCanvas(570, 421);
+    canvas.position(150,0);
     pixelDensity(1);
     
 }
 
-function draw(){
-    image(img,0,0,width, height)
-    loadPixels()
-    intensity = simImtensitySlider.value()
-    widerWave = simWaveSlider2.value()
-    smallerWave = simWaveSlider.value()
-    colorBlindType = typeRadio.value()
-    for (let i = 0; i < pixels.length; i+=4) {
-        pixelRow = fullProcess(pixels[i],pixels[i+1],pixels[i+2],pixels[i+3],colorBlindType,intensity,widerWave,smallerWave)
-        pixels[i] = pixelRow[0]
-        pixels[i+1] = pixelRow[1]
-        pixels[i+2] = pixelRow[2]
-        pixelRow[i+3] = pixelRow[3]
+function draw() {
+  image(img, 0, 0, width, height);
+  intensity = simImtensitySlider.value();
+  widerWave = simWaveSlider2.value();
+  smallerWave = simWaveSlider.value();
+  colorBlindType = typeRadio.value();
+
+  loadPixels();
+  for (let x = 0; x < width; x++) {
+    for (let y = 0; y < height; y++) {
+      let i = (x + y * width) * 4;
+      let pixelRow = fullProcess(
+        pixels[i],
+        pixels[i + 1],
+        pixels[i + 2],
+        pixels[i + 3],
+        colorBlindType,
+        intensity,
+        widerWave,
+        smallerWave
+      );
+      set(x, y, color(pixelRow[0], pixelRow[1], pixelRow[2], pixelRow[3]));
     }
-    updatePixels()
+  }
+  updatePixels();
 }
+
+
 function handleFile(file) { if (file.type === 'image') { img = createImg(file.data, ''); img.hide(); } }
 
 function rgba2rgb(r, g, b, a){
@@ -132,6 +191,9 @@ function rgb2rgba(r,g,b,a){
     return [ra,ga,ba,a]
 }
 
+function downloadImage(){
+    saveCanvas('simulated'+colorBlindType+' '+intensity, 'png');
+}
 function simIntensity(r,g,b,a,rs,gs,bs,intensity){
     var rk = Math.round(((1 - intensity) * r) + (intensity * rs))
     var gk = Math.round(((1 - intensity) * g) + (intensity * gs))
@@ -139,16 +201,15 @@ function simIntensity(r,g,b,a,rs,gs,bs,intensity){
     return [rk,gk,bk,a]
 }
 function fullProcess(r,g,b,a,colorBlindType, intensity,widerWave,smallerWave){
-    console.log("entra full process")
     pixelRow = rgba2rgb(r,g,b,a)
     pixelRow = rgb2lms(pixelRow[0],pixelRow[1],pixelRow[2])
-    if(colorBlindType=="protan"){
+    if(colorBlindType=="Protan"){
        pixelRow = lmsForProtanopia(pixelRow[0],pixelRow[1],pixelRow[2],widerWave,smallerWave)
     }
-    if(colorBlindType=="deutan"){
+    if(colorBlindType=="Deutan"){
         pixelRow = lmsForDeuteranopia(pixelRow[0],pixelRow[1],pixelRow[2],widerWave,smallerWave)
     }
-    if(colorBlindType=="tritan"){
+    if(colorBlindType=="Tritan"){
        pixelRow = lmsForTritanopia(pixelRow[0],pixelRow[1],pixelRow[2],widerWave,smallerWave)
     }
     pixelRow = lms2rgb(pixelRow[0],pixelRow[1],pixelRow[2])
