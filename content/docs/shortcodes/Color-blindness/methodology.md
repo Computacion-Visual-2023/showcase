@@ -61,3 +61,33 @@ CIEXYZ is based on the idea that any color that can be perceived by the human ey
 LMS is a color space that is used to describe the response of the three types of cone cells in the human eye to different wavelengths of light. It was developed by John A. Hunt, Vivianne C. Smith, and Lorne A. Johnston in 1992, and is based on the previous work of Pointer and Estevez.
 
 In this color space, LMS stands for the three types of cone cells in the human eye: L for long that responds to red light, M for medium that responds to green light, and S for short that responds to blue-violet light. The LMS color space describes how these cone cells respond to different wavelengths of light and how they combine to produce different colors.
+
+## Process
+
+For this work we focused on simulating and correcting three types of color blindness, Protanopia, Deuteranopia and Tritanopia.
+The Simulation starts by taking the RGBA values of the loaded image and saving them on 4 different arrays, then we eliminate the alpha channel by transforming the RGB values to the values with the correct opacity.
+
+R = ((1 - a) * 255) + (a * r)
+
+G = ((1 - a) * 255) + (a * g)
+
+B = ((1 - a) * 255) + (a * b)
+
+Then those values get translated into the LMS color space so we can work on the wavelengths that affect each CVD.
+
+![LMS](/showcase/images/LMS.png)
+
+For Protanopia, the L wavelength is affected.
+
+![Protanopia](/showcase/images/prota.png) 
+
+For Deuteranopia, the M wavelength is affected.
+
+![Deuteranopia](/showcase/images/deute.png) 
+
+For Tritanopia,the S wavelength is affected.
+
+![Deuteranopia](/showcase/images/trita.png)
+
+After this, we change the color space back to RBG and RGBA.
+For the color correction we follow a similar process, but once we have transformed the correct wavelength for the specific CVD we add another step. We widen the difference between the wavelength channels that are not affected by the condition, that way enlarging the color spectrum that the user can observe within the image. This solution is inspired by the way color blindness glasses like the "EnChroma" work, filtering the visible wavelengths for the user.
