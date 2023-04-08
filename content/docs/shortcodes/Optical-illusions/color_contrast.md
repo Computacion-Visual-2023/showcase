@@ -41,7 +41,7 @@ function draw() {
 
 ## Results
 
-{{< p5-iframe sketch="/showcase/sketches/color_contrast.js" width="400" height="500">}}
+{{< p5-iframe sketch="/showcase/sketches/color_contrast.js" width="405" height="505">}}
 
 ## Reference
 

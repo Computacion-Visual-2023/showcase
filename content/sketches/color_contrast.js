@@ -1,6 +1,7 @@
 let c1,c2,a,sp;
 function setup() {
-  createCanvas(400, 500);
+  canvas = createCanvas(400, 500);
+  canvas.position(0,0);
   c1 = color(255, 182, 193);
   c2 = color(63, 191, 191);
   
