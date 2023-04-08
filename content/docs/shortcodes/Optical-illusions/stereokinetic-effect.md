@@ -16,7 +16,7 @@ For this effect, it was necessary to consider two different colors that contrast
 [Stereokinetic Effect](https://michaelbach.de/ot/mot-ske/index.html)
 
 {{< details title="2D shape - Depth perception" open=false >}}
-{{< highlight html >}}
+{{< highlight javascript >}}
 
 
 let angle = 0;
