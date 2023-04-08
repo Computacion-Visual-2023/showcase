@@ -1,7 +1,7 @@
 let colorBlindType, img, pixelRow, simImtensitySlider, typeRadio, intensity, simWaveSlider2,simWaveSlider;
 let sliderLabel1,sliderLabel2, sliderLabel3, inputImg, widerWave, smallerWave, playButton;
 function preload(){
-    img = createVideo(['/showcase/sketches/semagato.mp4']);
+    video = createVideo(['/showcase/sketches/semagato.mp4']);
     video.hide();
 }
 
@@ -84,7 +84,7 @@ function playVideo() {
 }
 
 function draw() {
-  image(img, 0, 0, width, height);
+  image(video, 0, 0, width, height);
   intensity = simImtensitySlider.value();
   widerWave = simWaveSlider2.value();
   smallerWave = simWaveSlider.value();
