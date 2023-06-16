@@ -13,7 +13,7 @@ function preload() {
 }
 
 function setup() {
-    canvas = createCanvas(700, 500, WEBGL);
+    canvas = createCanvas(550, 500, WEBGL);
     canvas.position(150, 0);
     colorMode(RGB, 1);
     noStroke();
