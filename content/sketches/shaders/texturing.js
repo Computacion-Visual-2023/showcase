@@ -42,7 +42,7 @@ function setup() {
         }
     })
     selector1 = createSelect();
-    selector1.position(10, 220);
+    selector1.position(10, 235);
     selector1.option("luma SDTV", 1);
     selector1.option("luma Adobe", 2);
     selector1.option("luma HDTV", 3);
@@ -61,7 +61,7 @@ function setup() {
     lightness.hide();
 
     selector2 = createSelect();
-    selector2.position(10, 220);
+    selector2.position(10, 235);
     selector2.option("Multiply", 8);
     selector2.option("Add", 9);
     selector2.option("Screen", 10);
