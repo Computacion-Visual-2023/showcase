@@ -9,5 +9,5 @@ weight: 4
 
 ## Results
 
-{{< p5-iframe sketch="/showcase/sketches/box-texturing.js" width="400" height="400">}}
-{{< p5-iframe sketch="/showcase/sketches/sphere-texturing.js" width="400" height="400">}}
+{{< p5-iframe sketch="/showcase/sketches/shaders/box-texturing.js" width="400" height="400">}}
+{{< p5-iframe sketch="/showcase/sketches/shaders/sphere-texturing.js" width="400" height="400">}}
