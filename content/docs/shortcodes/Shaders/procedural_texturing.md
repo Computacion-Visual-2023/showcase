@@ -1,3 +1,6 @@
+---
+weight: 4
+---
 # Procedural Texturing
 
 ## Introduction 
