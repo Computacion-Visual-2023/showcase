@@ -15,7 +15,7 @@ function setup() {
   //truchet_tiles.js
   //...and example from P5 Reference:
   //https://p5js.org/es/examples/3d-shader-as-a-texture.html
-    createCanvas(400, 400, WEBGL);
+  createCanvas(400, 400, WEBGL);
   pg = createGraphics(400, 400, WEBGL);
   textureMode(NORMAL);
   noStroke();
@@ -30,7 +30,6 @@ function draw() {
   dotsShader.setUniform("u_resolution", [width, height]);
   dotsShader.setUniform("u_time", millis() / 1000.0);
   dotsShader.setUniform("u_mouse", [mouseX, map(mouseY, 0, height, height, 0)]);
-  //pg.emitResolution(dotsShader);
   pg.quad(-1, -1, 1, -1, 1, 1, -1, 1);
   texture(pg);
   box(200, 200);

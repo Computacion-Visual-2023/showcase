@@ -32,7 +32,6 @@ function draw() {
   streamShader.setUniform("u_time", millis() / 1000.0);
   streamShader.setUniform("u_mouse", [mouseX, map(mouseY, 0, height, height, 0)]);
   pg.quad(-1, -1, 1, -1, 1, 1, -1, 1);
-  pg.quad(-1, -1, 1, -1, 1, 1, -1, 1);
   texture(pg);
   sphere(100);
 }
